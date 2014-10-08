@@ -1,4 +1,6 @@
 var snake;
+var snakeLength;
+var snakeSize;
 
 var context;
 var screenWidth;
@@ -25,4 +27,22 @@ function gameLoop() {
 function gameDraw() {
     context.fillStyle = "rgb(196, 186, 10)";
     context.fillRect(0, 0, screenWidth, screenHidth);
+}
+
+function snakeInitilalize() {
+    snake = [];
+    snakeLenght = 15;
+    snakeSize = 20;
+    
+    for(var index = 0; index < snakeLength; index++){
+        snake.push();
+    }
+}
+
+function snakeDraw() {
+    
+}
+
+function snakeUpdate() {
+    
 }
