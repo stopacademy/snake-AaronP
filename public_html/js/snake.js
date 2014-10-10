@@ -27,27 +27,28 @@ function gameLoop() {
 }
 
 function gameDraw() {
-    context.fillStyle = "rgb(196, 186, 10)";
+    context.fillStyle = "rgb(36, 133, 1)";
     context.fillRect(0, 0, screenWidth, screenHidth);
 }
 
-function snakeInitilalize() {
+function snakeInitialize() {
     snake = [];
-    snakeLenght = 15;
+    snakeLenght = 5;
     snakeSize = 20;
     
     for(var index = 0; index < snakeLength; index++){
         snake.push( {
                 x: index,
                 y: 0
-        });
+       });
+
     }
 }
 
 function snakeDraw() {
          for( var index = 0; index < snake.length; index++) {
-         context.fillStyle = "black";
-         context.fillRect(snake[index].x * snakeSize, snake[index].y *snakeSize, snakeSize, snakeSize, snakeSize);
+         context.fillStyle = "red";
+         context.fillRect(snake[index].x * snakeSize, snake[index].y * snakeSize, snakeSize, snakeSize, snakeSize);
         }
 }
 
