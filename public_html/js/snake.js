@@ -14,6 +14,8 @@ var context;
 var screenWidth;
 var screenHeight;
 
+var gameState;
+
 /*----------------------------------------------------------------------------
  * Executing Game Code
  * ---------------------------------------------------------------------------
@@ -85,15 +87,15 @@ function snakeUpdate() {
     if(snakeDirection === "down") {
         snakeHeadY++; 
         }
-    else if(snakeDirection === "right") {
+    if(snakeDirection === "right") {
         snakeHeadX++;
         }
     if(snakeDirection === "left") {
-        snakeHeadY++;
-    else if(snakeDirection === "up") {
-        snakeHeadX++;
-    }
-    }
+        snakeHeadY--;
+        }
+    if(snakeDirection === "up") {
+        snakeHeadX--;
+       }
     
     
     checkFoodCollision(snakeHeadX, snakeHeadY);
@@ -139,16 +141,16 @@ function setFoodPosition() {
 function keyboardHandler(event) {
     console.log(event);
     
-    if(event.keyCode == "39" && snakeDirection !== "left") {
+    if(event.keyCode == "39" && snakeDirection !== "up") {
         snakeDirection = "right";
     }
-    else if(event.keyCode == "40" && snakeDirection !== "up") {
+    else if(event.keyCode == "40" && snakeDirection !== "left") {
         snakeDirection = "down";
     }
-    else if(event.keyCode == "37" && snakeDirection !== "right") {
+    else if(event.keyCode == "38" && snakeDirection !== "down") {
         snakeDirection = "left";
     }
-    else if(event.keyCode == "38" && snakeDirection !== "down") {
+    else if(event.keyCode == "37" && snakeDirection !== "right") {
         snakeDirection = "up";
     }
 }
@@ -170,6 +172,14 @@ function checkFoodCollision(snakeHeadX, snakeHeadY) {
 
 function checkWallCollision(snakeHeadX, snakeHeadY) {
     if(snakeHeadX * snakeSize >= screenWidth || snakeHeadX * snakeSize < 0) {
-        console.log("Wall Collision");
     }
+}
+
+/*----------------------------------------------------------------------------
+ * Game State Handling
+ * ---------------------------------------------------------------------------
+ */
+
+function setState(state){
+    gameState = state;
 }
