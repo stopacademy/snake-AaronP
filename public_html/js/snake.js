@@ -25,7 +25,7 @@ var gameOverMenu;
 gameInitialize();
 snakeInitialize();
 foodInitialize();
-setInterval(gameLoop, 1000 / 60);
+setInterval(gameLoop, 1000 / 20);
 
 /*----------------------------------------------------------------------------
  * Game Function
@@ -43,7 +43,7 @@ function gameInitialize() {
     canvas.height = screenHeight;
 
     document.addEventListener("keydown", keyboardHandler);
-    
+
     gameOverMenu = document.getElementById("gameOver");
 
     setState("PLAY");
@@ -70,8 +70,8 @@ function gameDraw() {
 
 function snakeInitialize() {
     snake = [];
-    snakeLength = 1;
-    snakeSize = 10;
+    snakeLength = 5;
+    snakeSize = 20;
     snakeDirection = "Moise";
 
     for (var index = snakeLength - 1; index >= 0; index--) {
@@ -94,14 +94,17 @@ function snakeUpdate() {
     if (snakeDirection === "down") {
         snakeHeadY++;
     }
-    if (snakeDirection === "right") {
+    else if (snakeDirection === "right") {
         snakeHeadX++;
     }
-    if (snakeDirection === "left") {
+    else if (snakeDirection === "left") {
         snakeHeadY--;
     }
-    if (snakeDirection === "up") {
+    else if (snakeDirection === "up") {
         snakeHeadX--;
+    }
+    else{
+        snakeHeadX++;
     }
 
 
@@ -194,11 +197,11 @@ function setState(state) {
 }
 
 function displayMenu(menu) {
-    menu.style.visibility = "visable";
+    menu.style.visibility = "visible";
 }
 
 function showMenu(state) {
-    if(state = "GAME OVER") {
+    if (state == "GAME OVER") {
         displayMenu(gameOverMenu);
     }
 }
